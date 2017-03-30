@@ -6,11 +6,16 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "intervention/image": "^2.3",
+        "laravel/browser-kit-testing": "^1.0",
+        "laravel/dusk": "^1.0",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
         "pragmarx/tracker": "^3.1",
         "pusher/pusher-php-server": "^2.6",
+        "tcg/voyager": "^0.11.8",
+        "unisharp/laravel-filemanager": "^1.7",
         "zizaco/entrust": "^1.7"
     },
     "require-dev": {

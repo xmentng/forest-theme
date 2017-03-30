@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Role;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -69,5 +70,8 @@ class RegisterController extends Controller
             'sex' => $data['sex'],
             'password' => bcrypt($data['password']),
         ]);
-    }
+        $user->attachRole(Role::where('name','general-user')->first());
+
+        return $user;
+    }   
 }

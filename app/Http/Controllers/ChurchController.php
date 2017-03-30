@@ -1,8 +1,11 @@
 <?php
 
+//namespace App\Http\Controllers\Admin; //admin add
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Church;
+
 
 class ChurchController extends Controller
 {
@@ -12,8 +15,9 @@ class ChurchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        $request = new Request();
         $churches = Church::orderBy('id','DESC')->paginate(5);
         return view('churches.index',compact('churches'))->with('i', ($request->input('page', 1) - 1) * 5);
     }
@@ -44,7 +48,7 @@ class ChurchController extends Controller
             'user_id' => 'required'
         ]);
 
-        Item::create($request->all());
+        Church::create($request->all());
 
         return redirect()->route('churches.index')->with('success','Church created successfully');
     }

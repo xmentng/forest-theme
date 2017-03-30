@@ -7,19 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 class Testimony extends Model
 {
     //
-     protected $fillable = ['title','body','user_id'];
+     protected $fillable = ['title','body','user_id','church_id','cell_id'];
 
-     protected $table = 'testimony';
+     /**
+     * Set to null if empty
+     * @param $input
+     */
+    public function setUserIdAttribute($input)
+    {
+        $this->attributes['user_id'] = $input ? $input : null;
+    }
+
 
       public function user(){
       	return $this->belongsTo('User');
       }
 
-      public function cell(){
-      	return $this->belongsTo('Cell');
+      public function group(){
+      	return $this->belongsTo('Group');
       }
 
-      public function users(){
+      public function church(){
       	return $this->belongsTo('Church');
       }
 }

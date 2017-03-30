@@ -42,9 +42,9 @@ return [
         'tracker' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'db_churchonline'),
-            'username' => env('DB_USERNAME', 'root'),
+            'port' => env('DB_PORT', '3307'),
+            'database' => env('DB_DATABASE', 'App'),
+            'username' => env('DB_USERNAME', 'escobar'),
             'password' => env('DB_PASSWORD', 'Cyclops@35'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -54,7 +54,7 @@ return [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'db_churchonline'),
+            'database' => env('DB_DATABASE', 'db_App'),
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', 'Cyclops@35'),
             'charset' => 'utf8mb4',
@@ -90,7 +90,7 @@ return [
     |
     */
 
-    'migrations' => 'migrations',
+    'migrations' => 'migrations_admin',
 
     /*
     |--------------------------------------------------------------------------

@@ -30,6 +30,40 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getFullName()
+        {
+            return $this->first_name . ' ' . $this->last_name;
+        }
+
+    /**
+     * Hash password
+     * @param $input
+     */
+    public function setPasswordAttribute($input)
+    {
+        if ($input)
+            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
+    }
+    
+
+    /**
+     * Set to null if empty
+     * @param $input
+     */
+    public function setRoleIdAttribute($input)
+    {
+        $this->attributes['role_id'] = $input ? $input : null;
+    }
+
+    /**
+     * Set attribute to money format
+     * @param $input
+     */
+    public function setSexAttribute($input)
+    {
+        $this->attributes['sex'] = $input ? $input : null;
+    }
+
     //each user has one church
     public function churches(){
         return $this->hasOne('Church');

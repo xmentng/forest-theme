@@ -12,8 +12,7 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        //
-        $permission = [
+         $permission = [
         	[
         		'name' => 'role-list',
         		'display_name' => 'Display Role Listing',
@@ -55,22 +54,22 @@ class PermissionTableSeeder extends Seeder
         		'description' => 'Delete Church'
         	],
         	[
-        		'name' => 'cell-list',
+        		'name' => 'group-list',
         		'display_name' => 'Display Cell Listing',
         		'description' => 'See only Listing Of Item'
         	],
         	[
-        		'name' => 'cell-create',
+        		'name' => 'group-create',
         		'display_name' => 'Create Cell',
         		'description' => 'Create New Cell'
         	],
         	[
-        		'name' => 'cell-edit',
+        		'name' => 'group-edit',
         		'display_name' => 'Edit Cell',
         		'description' => 'Edit Cell'
         	],
         	[
-        		'name' => 'cell-delete',
+        		'name' => 'group-delete',
         		'display_name' => 'Delete Cell',
         		'description' => 'Delete Cell'
         	],
@@ -113,11 +112,31 @@ class PermissionTableSeeder extends Seeder
         		'name' => 'testimony-delete',
         		'display_name' => 'Delete Testimony',
         		'description' => 'Delete Testimony'
-        	]
+        	],
+            [
+                'name' => 'media-list',
+                'display_name' => 'Display Testimony Listing',
+                'description' => 'See only Listing Of Testimony'
+            ],
+            [
+                'name' => 'media-create',
+                'display_name' => 'Create Testimony',
+                'description' => 'Create New Testimony'
+            ],
+            [
+                'name' => 'media-edit',
+                'display_name' => 'Edit Testimony',
+                'description' => 'Edit Testimony'
+            ],
+            [
+                'name' => 'media-delete',
+                'display_name' => 'Delete Testimony',
+                'description' => 'Delete Testimony'
+            ]
         ];
-
         foreach ($permission as $key => $value) {
         	Permission::create($value);
         }
+
     }
 }

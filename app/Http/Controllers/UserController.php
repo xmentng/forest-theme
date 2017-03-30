@@ -1,23 +1,31 @@
 <?php
 
+//namespace App\Http\Controllers\Admin; //admin add
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\User;
+use App\Role;
+use DB;
+use Hash;
+
 
 class UserController extends Controller
 {
-    //
 
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
+        //
+        $request = new Request();
         $data = User::orderBy('id','DESC')->paginate(5);
-       	return view('users.index',compact('data'))->with('i', ($request->input('page', 1) - 1) * 5);
+        return view('users.index',compact('data'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -27,7 +35,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::lists('display_name','id');
+        //
+        $roles = Role::pluck('display_name','id');
         return view('users.create',compact('roles'));
     }
 
@@ -39,7 +48,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        //
+       $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'sex' => 'required|in:0,1',
@@ -66,8 +76,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        //
         $user = User::find($id);
-        return view('users.show',compact('user'));
+       return view('users.show',compact('user'));
     }
 
     /**
@@ -78,9 +89,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        //
         $user = User::find($id);
-        $roles = Role::lists('display_name','id');
-        $userRole = $user->roles->lists('id','id')->toArray();
+        $roles = Role::pluck('display_name','id');
+        $userRole = $user->roles->pluck('id','id')->toArray();
 
         return view('users.edit',compact('user','roles','userRole'));
     }
@@ -94,6 +106,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
+        $request = new Request();
         $this->validate($request, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,'.$id,
@@ -129,7 +143,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        //
         User::find($id)->delete();
-        return redirect()->route('user.index')->with('success','User deleted successfully');
+        return redirect()->route('users.index')->with('success','User deleted successfully');
     }
 }

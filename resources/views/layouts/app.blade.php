@@ -31,7 +31,7 @@
                     <li><a href="{{ route('users.index') }}">Users</a></li>
                     <li><a href="{{ route('roles.index') }}">Roles</a></li>
                     <li><a href="{{ route('church.index') }}">Churches</a></li>
-                    <li><a href="{{ route('cell.index') }}">Cells</a></li>
+                    <li><a href="{{ route('group.index') }}">Cells</a></li>
                     <li><a href="{{ route('testimony.index') }}">Testimonies</a></li>
                     <li><a href="{{ route('transaction.index') }}">Partnership</a></li>
                 </ul>

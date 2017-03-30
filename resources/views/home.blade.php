@@ -9,6 +9,14 @@
 
                 <div class="panel-body">
                     You are logged in!
+                    <br><br>
+                    @role(('owner'))
+                    <li><a href="/admin/user">Manage Users</a></li>
+                    @endrole
+                    <li><a href="/admin/church">Manage Churches</a></li>
+                    <li><a href="/admin/media">Manage Medias</a></li>
+                    <li><a href="/admin/testimony">Manage Testimonies</a></li>
+                    <li><a href="/admin/transaction">Manage Transactions</a></li>
                 </div>
             </div>
         </div>
