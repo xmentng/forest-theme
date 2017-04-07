@@ -8,7 +8,7 @@
 	        </div>
 	        <div class="pull-right">
 	        	@permission(('church-create'))
-	            <a class="btn btn-success" href="{{ route('church.create') }}"> Create New Church</a>
+	            <a class="btn btn-success" href="{{ route('admin.church.create') }}"> Create New Church</a>
 	            @endpermission
 	        </div>
 	    </div>
@@ -37,12 +37,12 @@
 		<td>{{ $church->country }}</td>
 		<td>{{ $church->user_id }}</td>
 		<td>
-			<a class="btn btn-info" href="{{ route('churches.show',$church->id) }}">Show</a>
+			<a class="btn btn-info" href="{{ route('church.show',$church->id) }}">Show</a>
 			@permission(('church-edit'))
-			<a class="btn btn-primary" href="{{ route('churches.edit',$church->id) }}">Edit</a>
+			<a class="btn btn-primary" href="{{ route('admin.church.edit',$church->id) }}">Edit</a>
 			@endpermission
 			@permission(('church-delete'))
-			{!! Form::open(['method' => 'DELETE','route' => ['churches.destroy', $church->id],'style'=>'display:inline']) !!}
+			{!! Form::open(['method' => 'DELETE','route' => ['admin.church.destroy', $church->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
         	{!! Form::close() !!}
         	@endpermission

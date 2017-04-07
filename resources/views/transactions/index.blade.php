@@ -37,12 +37,12 @@
 		<td>{{ $transaction->cell_id }}</td>
 		<td>{{ $transaction->church_id }}</td>
 		<td>
-			<a class="btn btn-info" href="{{ route('transactions.show',$transaction->id) }}">Show</a>
+			<a class="btn btn-info" href="{{ route('transaction.show',$transaction->id) }}">Show</a>
 			@permission(('transaction-edit'))
-			<a class="btn btn-primary" href="{{ route('transactions.edit',$transaction->id) }}">Edit</a>
+			<a class="btn btn-primary" href="{{ route('transaction.edit',$transaction->id) }}">Edit</a>
 			@endpermission
 			@permission(('transaction-delete'))
-			{!! Form::open(['method' => 'DELETE','route' => ['transactions.destroy', $transaction->id],'style'=>'display:inline']) !!}
+			{!! Form::open(['method' => 'DELETE','route' => ['transaction.destroy', $transaction->id],'style'=>'display:inline']) !!}
             {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
         	{!! Form::close() !!}
         	@endpermission

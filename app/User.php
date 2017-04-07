@@ -30,6 +30,72 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function isAdmin()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'admin')
+            {
+                return true;
+            }
+        }
+    }
+
+    public function isOwner()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'owner')
+            {
+                return true;
+            }
+        }
+    }
+
+    public function isPastor()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'pastor')
+            {
+                return true;
+            }
+        }
+    }
+
+    public function isLeader()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'leader')
+            {
+                return true;
+            }
+        }
+    }
+
+    public function isWorker()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'worker')
+            {
+                return true;
+            }
+        }
+    }
+
+    public function isMember()
+    {
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'member')
+            {
+                return true;
+            }
+        }
+    }
+
     public function getFullName()
         {
             return $this->first_name . ' ' . $this->last_name;
@@ -81,4 +147,16 @@ class User extends Authenticatable
     public function testimonies(){
         return $this->hasMany('Testimony');
     }
+
+     public function hasRole($role)
+    {
+        return $this->role == $role;
+    }
+
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\Role');
+    }
+
 }
