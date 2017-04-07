@@ -183,6 +183,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         'PragmaRX\Tracker\Vendor\Laravel\ServiceProvider',
         //TCG\Voyager\VoyagerServiceProvider::class,
+        Ivebe\Lffmpeg\LffmpegServiceProvider::class,
     ],
 
     /*
